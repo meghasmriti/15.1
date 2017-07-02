@@ -1,0 +1,20 @@
+hadoop fs -mkdir -p /user/acadgild/hive
+
+hadoop fs -put /home/acadgild/hive/emp_details.txt /user/acadgild/hive
+
+create external table emp_details
+(
+emp_name string,
+skills string,
+exp int,
+location string
+)
+row format delimited
+fields terminated by ','
+location '/user/acadgild/hive/';
+
+SELECT * FROM emp_details;
+
+
+ 
+SELECT skills, COUNT(*) FROM emp_details GROUP BY skills;
